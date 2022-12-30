@@ -1,7 +1,7 @@
 export const prerender = true;
 
 /** @type {import('./$types').LayoutLoad} */
-export async function load() {
+export async function load({ url }) {
 	const posts_glob = import.meta.glob('./blog/posts/*.md');
 	const post_entries = Object.entries(posts_glob);
 
@@ -19,5 +19,7 @@ export async function load() {
 
 	const tags = [...new Set(posts.flatMap((post) => post.metadata.tags))];
 
-	return { posts, tags };
+	const currentRoute = url.pathname;
+
+	return { currentRoute, posts, tags };
 }
