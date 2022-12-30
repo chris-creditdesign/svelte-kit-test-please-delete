@@ -1,24 +1,17 @@
 <script>
+	import PostList from '$lib/PostList/index.svelte';
+	import TagList from '$lib/TagList/index.svelte';
+
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	let { tags } = data;
+	let { posts, tags } = data;
 </script>
 
 <h1>{data.title}</h1>
 
 <svelte:component this={data.content} />
 
-<ul>
-	{#each tags as tag}
-		<li>
-			<a href="/tags/{tag}">{tag}</a>
-		</li>
-	{/each}
-</ul>
+<PostList {posts} />
 
-<ul>
-	{#each data.posts as { metadata, path }}
-		<li><a href="/blog/{path}">{metadata.title}</a></li>
-	{/each}
-</ul>
+<TagList {tags} />

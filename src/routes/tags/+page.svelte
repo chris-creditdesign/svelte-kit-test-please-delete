@@ -1,4 +1,6 @@
 <script>
+	import TagList from '$lib/TagList/index.svelte';
+
 	export let data;
 
 	let { tags } = data;
@@ -8,10 +10,4 @@
 
 <p>Click on a tag to see featured blog posts:</p>
 
-<ul>
-	{#each tags as tag}
-		<li>
-			<a href="/tags/{tag}">{tag}</a>
-		</li>
-	{/each}
-</ul>
+<TagList {tags} />

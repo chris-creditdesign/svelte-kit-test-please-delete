@@ -1,4 +1,6 @@
 <script>
+	import PostList from '$lib/PostList/index.svelte';
+
 	export let data;
 
 	const { posts } = data;
@@ -8,8 +10,4 @@
 
 <p>This is the start of by blog</p>
 
-<ul>
-	{#each posts as { metadata, path }}
-		<li><a href="/blog/{path}">{metadata.title}</a></li>
-	{/each}
-</ul>
+<PostList {posts} />
