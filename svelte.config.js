@@ -3,8 +3,6 @@ import { vitePreprocess } from '@sveltejs/kit/vite';
 import { mdsvex } from 'mdsvex';
 const dev = process.argv.includes('dev');
 
-console.log('dev', dev);
-
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	extensions: ['.svelte', '.md'],
@@ -19,11 +17,10 @@ const config = {
 	],
 
 	kit: {
-		adapter: adapter()
-	},
-
-	paths: {
-		base: dev ? '' : '/svelte-kit-test-please-delete'
+		adapter: adapter(),
+		paths: {
+			base: dev ? '' : '/svelte-kit-test-please-delete'
+		}
 	}
 };
 
